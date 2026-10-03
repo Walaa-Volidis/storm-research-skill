@@ -71,14 +71,16 @@ The report is delivered as a **PDF only**. The HTML below is an internal render 
 
 1. Read `report-template.html` in this skill folder. Clone it; do not rebuild the CSS. It is a modern design: dark hero, Space Grotesk / Inter / JetBrains Mono, violet + teal accent. Keep the `<style>` block and the Stanford STORM credit in the footer verbatim.
 2. Fill every section. Mapping from the phases:
-   - **60-second summary** — decision-maker-grade, nuance not headline. Lead with the settled fact, then the contested interpretation.
-   - **5 key findings, ranked by reliability** — most important things now known, highest reliability first. Each carries a 1-10 confidence score (set in Phase 4) and Supported-by / Challenged-by chips drawn from the contradiction map.
+   - **60-second summary** — decision-maker-grade, nuance not headline. 3-5 bullets, one idea each, no more than ~2 short sentences per bullet: settled fact, then contested interpretation, then the tension. May close with one optional short paragraph (1-2 sentences, ~40 words max). Never a block paragraph.
+   - **5 key findings, ranked by reliability** — most important things now known, highest reliability first. Each is a one-sentence claim, an optional short paragraph of extra detail (1-2 sentences, ~40 words max), then 2-4 short bullets (evidence, caveat, correction). Never a block paragraph. Each carries a 1-10 confidence score (set in Phase 4) and Supported-by / Challenged-by chips drawn from the contradiction map.
+   - **Contested signal sidebar** — 2-3 bullets, not a paragraph.
    - **Hidden connection** — the non-obvious link from Phase 2 that only appears across all five lenses. **This slot is optional, not mandatory.** If no genuine cross-lens connection exists, write that none emerged and why. A truthful "none found" beats a manufactured insight, and manufacturing one here is the most likely way this report becomes wrong.
    - **Key assumption / missing 6th lens** — the blind spot from Phase 2, framed as the lens that could change the conclusions.
    - **Actionable insight** — 3-6 specific moves for the reader's role identified in Phase 0. Specific, not abstract.
    - **Claim safety guide** — assert / caveat / avoid, populated after Phase 4 verification.
    - **Frontier question** — the one question that would change everything.
    - **References** — every citation with a verification-status tag (set in Phase 4).
+   - **Link every source.** Wherever a source is named (finding bullets, Supported-by chips, contested sidebar, claim safety guide, references), wrap it as `<a class="src" href="PRIMARY_URL">Source name</a>` pointing at the primary source, not a blog or press summary.
    - Each finding card takes TWO reliability classes: the outer `<div class="finding rl-...">` (colors the left bar) and the inner `<div class="rel ...">` — set both to `high | medhigh | medium | low` for that finding.
 3. Write the working HTML to a **temp path** (the OS temp/scratch dir), e.g. `{temp}/{topic-slug}-{YYYY-MM-DD}-briefing.html`. Do NOT write it into `storm-reports/` — that folder holds PDFs only. The PDF is rendered from this temp file in Output after Phase 4 corrections are applied. The HTML is never handed to the user.
 
@@ -94,6 +96,7 @@ This is what separates Storm Research from a normal report. Run it before delive
 
 **4c. Apply corrections.** Edit the report:
 - Fix any wrong figures, titles, dates, or mischaracterizations.
+- Update every source link to the verified primary URL; unlink (keep as plain text) any source whose URL could not be verified.
 - Downgrade confidence scores where evidence turned out thin; demote preprints and contested claims into the "Contested signal" sidebar.
 - Re-attribute single-survey or commissioned stats honestly.
 - Fill the verification banner (`X fabricated, Y corrected, Z demoted`) and the per-citation status tags. **The banner reports what happened; it is not a scoreboard to fill.** `0 fabricated, 0 corrected` is a good and reportable outcome — never invent or inflate a correction to make the pass look rigorous. Equally, never suppress a real one.
